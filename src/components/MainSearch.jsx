@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Job from "./Job";
 
 const MainSearch = () => {
@@ -39,11 +40,15 @@ const MainSearch = () => {
             <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
           </Form>
         </Col>
+        <Col xs={10} className="mx-auto mt-5 mb-5">
+          <Link to="/favourites">Vai ai preferiti</Link>
+        </Col>
         <Col xs={10} className="mx-auto mb-5">
           {jobs.map(jobData => (
             <Job key={jobData._id} data={jobData} />
           ))}
         </Col>
+
       </Row>
     </Container>
   );
