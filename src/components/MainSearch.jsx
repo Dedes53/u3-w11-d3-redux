@@ -2,10 +2,13 @@ import { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Job from "./Job";
+import { useSelector } from "react-redux";
 
 const MainSearch = () => {
   const [query, setQuery] = useState("");
   const [jobs, setJobs] = useState([]);
+
+  const favourites = useSelector((state) => state.favourites.companies); //leggo lo stato
 
   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
@@ -40,8 +43,9 @@ const MainSearch = () => {
             <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
           </Form>
         </Col>
-        <Col xs={10} className="mx-auto mt-5 mb-5">
+        <Col xs={10} className="mx-auto mt-5 mb-5 d-flex justify-content-between align-items-center">
           <Link to="/favourites">Vai ai preferiti</Link>
+          <p className="bg-primary text-white p-2 rounded">Hai: <b>{favourites.length}</b> preferiti</p>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
           {jobs.map(jobData => (
