@@ -33,9 +33,12 @@ function FavouriteList() {
                                             type: "REMOVE_FROM_FAVOURITES",
                                             payload: companies
                                         })
-                                    }}>Rimuovi dai preferiti</Button>
+                                    }}
+                                >Rimuovi dai preferiti
+                                </Button>
                             </Col>
-                        </li>)}
+                        </li>)
+                }
 
             </ul>
         </Container>
